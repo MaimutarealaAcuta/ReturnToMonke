@@ -31,15 +31,28 @@ public class AI : MonoBehaviour
             transform.Translate(speed * (float)Math.Cos(radians) * Time.deltaTime, 0, speed * (float)Math.Sin(radians) * Time.deltaTime);
         }
 
-        if(transform.position.x < 1 && transform.position.z < 1 &&
-           transform.position.x > -1 && transform.position.z > -1)
-        {
-            move = false;
-        }
+        //if(transform.position.x < 1 && transform.position.z < 1 &&
+        //   transform.position.x > -1 && transform.position.z > -1)
+        //{
+        //    move = false;
+        //}
 
         if(hp <= 0)
         {
             Destroy(gameObject);
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Monolith"))
+        {
+            move = false;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        move = true;
     }
 }
