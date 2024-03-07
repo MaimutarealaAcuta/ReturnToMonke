@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class Interactor : MonoBehaviour
 {
-    [SerializeField] private Transform interactorSource;
-    [SerializeField] private float interactRange;
+    [SerializeField]
+    private Transform interactorSource;
+    [SerializeField]
+    private float interactRange;
 
     void Update()
     {

@@ -4,28 +4,23 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    [SerializeField] private bool isPC;
+    [SerializeField]
+    private float speed;
+    [SerializeField]
+    private bool isPC;
+
+    [SerializeField]
+    private CharacterStats characterStats;
+
     private Vector2 move, mouseLook, gamepadLook;
     private Vector3 rotationTarget;
-
-    public void OnMove(InputAction.CallbackContext context)
-    {
-        move = context.ReadValue<Vector2>();
-    }
-
-    public void OnMouseLook(InputAction.CallbackContext context)
-    {
-        mouseLook = context.ReadValue<Vector2>();
-    }
-
-    public void OnGamepadLook(InputAction.CallbackContext context)
-    {
-        gamepadLook = context.ReadValue<Vector2>();
-    }
+    
+    private bool canMove = true;
 
     private void Update()
     {
+        if (!canMove)
+            return;
         if (isPC)
         {
             RaycastHit hit;
@@ -78,7 +73,8 @@ public class PlayerController : MonoBehaviour
 
         Vector3 movement = new(move.x, 0f, move.y);
 
-        transform.Translate(speed * Time.deltaTime * movement, Space.World);
+        //transform.Translate(speed * Time.deltaTime * movement, Space.World);
+        Translate(movement);
     }
 
     private void movePlayer()
@@ -90,6 +86,41 @@ public class PlayerController : MonoBehaviour
             //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.15f);
         }
 
-        transform.Translate(speed * Time.deltaTime * movement, Space.World);
+        //transform.Translate(speed * Time.deltaTime * movement, Space.World);
+        Translate(movement);
     }
+
+    public void toggleMovement()
+    {
+        canMove = !canMove;
+    }
+    
+    private void Translate (Vector3 movement)
+    {
+        string agilityKey = GameManager._instance.skillTree.getSkillName(SkillTree.ESkill.Agility);
+        float agility = 1 + (float)characterStats.GetStatValue(agilityKey) / 20;
+
+        Vector3 translation = agility * speed * Time.deltaTime * movement;
+
+        transform.Translate(translation, Space.World);
+    }
+
+    #region Events
+
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        move = context.ReadValue<Vector2>();
+    }
+
+    public void OnMouseLook(InputAction.CallbackContext context)
+    {
+        mouseLook = context.ReadValue<Vector2>();
+    }
+
+    public void OnGamepadLook(InputAction.CallbackContext context)
+    {
+        gamepadLook = context.ReadValue<Vector2>();
+    }
+
+    #endregion
 }
