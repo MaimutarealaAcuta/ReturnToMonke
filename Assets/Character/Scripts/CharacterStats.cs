@@ -9,17 +9,17 @@ public class CharacterStats : MonoBehaviour
     private int currentHealth;
 
     [SerializeField]
-    private int defaultStrenght;
+    private int defaultStrenght = 0;
     [SerializeField]
-    private int defaultAgility;
+    private int defaultAgility = 0;
     [SerializeField]
-    private int defaultVitality;
+    private int defaultVitality = 0;
     [SerializeField]
-    private int defaultFaith;
+    private int defaultFaith = 0;
     [SerializeField]
-    private int defaultLuck;
+    private int defaultLuck = 0;
     [SerializeField]
-    private int defaultVision;
+    private int defaultVision = 0;
 
     [SerializeField]
     Dictionary<string, Stat> stats = new Dictionary<string, Stat>();
@@ -28,12 +28,12 @@ public class CharacterStats : MonoBehaviour
     {
         currentHealth = maxHealth;
 
-        stats.Add("strenght", new Stat(defaultStrenght));
-        stats.Add("agility", new Stat(defaultAgility));
-        stats.Add("vitality", new Stat(defaultVitality));
-        stats.Add("faith", new Stat(defaultFaith));
-        stats.Add("luck", new Stat(defaultLuck));
-        stats.Add("vision", new Stat(defaultVision));
+        stats.Add("Strength", new Stat(defaultStrenght));
+        stats.Add("Agility", new Stat(defaultAgility));
+        stats.Add("Vitality", new Stat(defaultVitality));
+        stats.Add("Faith", new Stat(defaultFaith));
+        stats.Add("Luck", new Stat(defaultLuck));
+        stats.Add("Vision", new Stat(defaultVision));
     }
 
     private void Update()
@@ -70,6 +70,11 @@ public class CharacterStats : MonoBehaviour
             currentHealth += healAmount;
         }
         Debug.Log(transform.name + " heals for " + healAmount);
+    }
+
+    public bool IsAtMaxHealth()
+    {
+        return currentHealth == maxHealth;
     }
 
     private void Die()

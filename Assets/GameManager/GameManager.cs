@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     }
 
     public Monolith monolith;
-    //public Player player;
+    public CharacterStats characterStats;
     public SkillTree skillTree;
     public PlayerController playerController;
     public UIScript uiScript;
