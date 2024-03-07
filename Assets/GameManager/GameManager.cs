@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public SkillTree skillTree;
     public PlayerController playerController;
     public UIScript uiScript;
+    public DNAScript dnaScript;
 
 
     void Start()

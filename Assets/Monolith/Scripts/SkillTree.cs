@@ -79,7 +79,7 @@ public class SkillTree : MonoBehaviour
         return skillMaxLevels[(int)skill];
     }
 
-    public bool increaseLevel(ESkill skill)
+    public void increaseLevel(ESkill skill)
     {
         GameManager gameManager = GameManager._instance;
         skillLevels[(int)skill]++;
@@ -115,11 +115,9 @@ public class SkillTree : MonoBehaviour
             default:
                 break;
         }
-
-        return getCurrentLevel(skill) == getMaxLevel(skill);
     }
     
-    int getPrice(ESkill skill)
+    public int getPrice(ESkill skill)
     {
         return skillPrices[(int)skill][getCurrentLevel(skill)];
     }
@@ -134,7 +132,7 @@ public class SkillTree : MonoBehaviour
         return "Level: " + getCurrentLevel(skill) + " / " + getMaxLevel(skill);
     }
 
-    public string getCostString(ESkill skill)
+    public string getPriceString(ESkill skill)
     {
         if (getCurrentLevel(skill) == getMaxLevel(skill))
         {
@@ -142,4 +140,10 @@ public class SkillTree : MonoBehaviour
         }
         return "Cost: " + getPrice(skill) + " DNA";
     }
+
+    public string getSkillName(ESkill skill)
+    {
+        return skillNames[(int)skill];
+    }
+    
 }

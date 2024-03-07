@@ -5,7 +5,8 @@ using UnityEngine;
 public class UIScript : MonoBehaviour
 {
     public SkillTreeUIScript skillTreeUI;
-    
+    public DNAPanel dnaPanel;
+
     // Start is called before the first frame update
     void Start()
     {
