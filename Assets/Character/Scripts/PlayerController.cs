@@ -14,9 +14,13 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 move, mouseLook, gamepadLook;
     private Vector3 rotationTarget;
+    
+    private bool canMove = true;
 
     private void Update()
     {
+        if (!canMove)
+            return;
         if (isPC)
         {
             RaycastHit hit;
@@ -86,6 +90,11 @@ public class PlayerController : MonoBehaviour
         Translate(movement);
     }
 
+    public void toggleMovement()
+    {
+        canMove = !canMove;
+    }
+    
     private void Translate (Vector3 movement)
     {
         int agility = characterStats.GetStatValue("agility");
