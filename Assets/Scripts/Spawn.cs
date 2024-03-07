@@ -22,22 +22,22 @@ public class Spawn : MonoBehaviour
         {
             // Cadran I
             
-            pos = new(x, 0, y);
+            pos = new(x, 1, y);
         } else if (side <= 50)
         {
             // Cadran II
-            pos = new(-x, 0, y);
+            pos = new(-x, 1, y);
         } else if (side <= 75)
         {
             // Cadran III
-            pos = new(-x, 0, -y);
+            pos = new(-x, 1, -y);
         } else
         {
             // Cadran IV
-            pos = new(x, 0, -y);
+            pos = new(x, 1, -y);
         }
 
-        Instantiate(spawnObject, pos, Quaternion.identity);
+        Instantiate(spawnObject, pos, spawnObject.transform.rotation);
     }
        
 }
