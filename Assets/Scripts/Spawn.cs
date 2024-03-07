@@ -37,7 +37,7 @@ public class Spawn : MonoBehaviour
             pos = new(x, 1, -y);
         }
 
-        Instantiate(spawnObject, pos, Quaternion.identity);
+        Instantiate(spawnObject, pos, spawnObject.transform.rotation);
     }
        
 }
