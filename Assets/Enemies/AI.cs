@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 using static UnityEditor.PlayerSettings;
 
 public class AI : MonoBehaviour
@@ -18,45 +19,52 @@ public class AI : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    private void FixedUpdate()
     {
         Vector3 direction = (Vector3.zero - transform.position).normalized;
         direction.y = 0;
-        if (move)
-        {
-            rb.isKinematic = false;
-            transform.Translate(direction * speed * Time.deltaTime);
-        } 
-        else
-        {
-            rb.isKinematic = true;
-        }
-
-        if (hp <= 0)
-        {
-            Destroy(gameObject);
-        }
+        rb.MovePosition(transform.position + direction * speed * Time.fixedDeltaTime);
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.CompareTag("Monolith"))
-        {
-            move = false;
-        }
-    }
+    //void Update()
+    //{
+    //    Vector3 direction = (Vector3.zero - transform.position).normalized;
+    //    direction.y = 0;
+    //    if (move)
+    //    {
+    //        rb.isKinematic = false;
+    //        transform.Translate(direction * speed * Time.deltaTime);
+    //    } 
+    //    else
+    //    {
+    //        rb.isKinematic = true;
+    //    }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            AI col = collision.gameObject.GetComponent<AI>();
-            if (col != null)
-            {
-                move = col.move;
-            }
-        }
-    }
+    //    if (hp <= 0)
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
+
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("Monolith"))
+    //    {
+    //        move = false;
+    //    }
+    //}
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Enemy"))
+    //    {
+    //        AI col = collision.gameObject.GetComponent<AI>();
+    //        if (col != null)
+    //        {
+    //            move = col.move;
+    //        }
+    //    }
+    //}
 
     //private void OnCollisionStay(Collision collision)
     //{
