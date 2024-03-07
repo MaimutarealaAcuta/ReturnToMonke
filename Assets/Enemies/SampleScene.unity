@@ -480,6 +480,26 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Monolith
       objectReference: {fileID: 0}
+    - target: {fileID: 3233687697748589972, guid: c3abe7faca6d6134d86b34463b58b9d3,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3233687697748589972, guid: c3abe7faca6d6134d86b34463b58b9d3,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3233687697748589972, guid: c3abe7faca6d6134d86b34463b58b9d3,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3233687697748589972, guid: c3abe7faca6d6134d86b34463b58b9d3,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7408335087001448457, guid: c3abe7faca6d6134d86b34463b58b9d3,
         type: 3}
       propertyPath: m_LocalPosition.x

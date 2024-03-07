@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1295526878181777743}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,7 +93,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4860717225327005403}
-  m_Material: {fileID: 13400000, guid: 03277a6808211324e87143508e7ad03a, type: 2}
+  m_Material: {fileID: 13400000, guid: 583b4a16413682541b3d5ed57376eaa1, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -133,7 +133,7 @@ Rigidbody:
   m_GameObject: {fileID: 4860717225327005403}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 1
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}

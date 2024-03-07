@@ -11,48 +11,66 @@ public class AI : MonoBehaviour
     public float distanceTarget;
 
     private bool move = true;
+    private Rigidbody rb;
 
-    public static double DEGREE(double radians)
+    private void Start()
     {
-        return radians * 180 / Math.PI;
+        rb = GetComponent<Rigidbody>();
     }
 
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        double radians = Math.Atan2(transform.position.z, transform.position.x) + Math.PI;
-       
-        if(move)
+        Vector3 direction = (Vector3.zero - transform.position).normalized;
+        direction.y = 0;
+        if (move)
         {
-            transform.Translate(speed * (float)Math.Cos(radians) * Time.deltaTime, 0, speed * (float)Math.Sin(radians) * Time.deltaTime);
+            rb.isKinematic = false;
+            transform.Translate(direction * speed * Time.deltaTime);
+        } 
+        else
+        {
+            rb.isKinematic = true;
         }
 
-        //if(transform.position.x < 1 && transform.position.z < 1 &&
-        //   transform.position.x > -1 && transform.position.z > -1)
-        //{
-        //    move = false;
-        //}
-
-        if(hp <= 0)
+        if (hp <= 0)
         {
             Destroy(gameObject);
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerStay(Collider other)
     {
-        if (collision.gameObject.CompareTag("Monolith"))
+        if (other.gameObject.CompareTag("Monolith"))
         {
             move = false;
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        move = true;
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            AI col = collision.gameObject.GetComponent<AI>();
+            if (col != null)
+            {
+                move = col.move;
+            }
+        }
     }
+
+    //private void OnCollisionStay(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Monolith"))
+    //    {
+    //        move = false;
+    //    }
+    //}
+
+    //private void OnCollisionExit(Collision collision)
+    //{
+    //    if(collision.gameObject.CompareTag("Monolith"))
+    //    {
+    //        move = true;
+    //    }
+    //}
 }
