@@ -97,7 +97,8 @@ public class PlayerController : MonoBehaviour
     
     private void Translate (Vector3 movement)
     {
-        int agility = characterStats.GetStatValue("agility");
+        string agilityKey = GameManager._instance.skillTree.getSkillName(SkillTree.ESkill.Agility);
+        float agility = 1 + (float)characterStats.GetStatValue(agilityKey) / 20;
 
         Vector3 translation = agility * speed * Time.deltaTime * movement;
 

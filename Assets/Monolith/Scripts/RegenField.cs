@@ -34,14 +34,14 @@ public class RegenField : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            if (coolingDown) return;
-            coolingDown = true;
-            //PlayerController player = other.gameObject.GetComponent<PlayerController>();
-            // if ( player.getHealth < player.getMaxHealth)
-            // {
-            //      player.heal(healValue);
-                    HealAnim();
-            // }
+            if (coolingDown) return;            
+            CharacterStats player = other.gameObject.GetComponent<CharacterStats>();
+            if (!player.IsAtMaxHealth())
+            {
+                coolingDown = true;
+                player.Heal(healValue);
+                HealAnim();
+            }
         }
     }
 
