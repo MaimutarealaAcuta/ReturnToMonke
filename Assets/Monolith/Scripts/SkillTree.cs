@@ -90,7 +90,7 @@ public class SkillTree : MonoBehaviour
                 //gameManager.player.strength++;
                 break;
             case ESkill.Agility:
-                //gameManager.player.agility++;
+                gameManager.characterStats.SetStatValue(getSkillName(skill), skillLevels[(int)skill]);
                 break;
             case ESkill.Vitality:
                 //gameManager.player.vitality++;
