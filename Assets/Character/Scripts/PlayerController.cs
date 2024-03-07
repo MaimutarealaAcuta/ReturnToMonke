@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 move, mouseLook, gamepadLook;
     private Vector3 rotationTarget;
 
+    private bool canMove = true;
+
     public void OnMove(InputAction.CallbackContext context)
     {
         move = context.ReadValue<Vector2>();
@@ -26,6 +28,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (!canMove)
+            return;
         if (isPC)
         {
             RaycastHit hit;
@@ -91,5 +95,10 @@ public class PlayerController : MonoBehaviour
         }
 
         transform.Translate(speed * Time.deltaTime * movement, Space.World);
+    }
+
+    public void toggleMovement()
+    {
+        canMove = !canMove;
     }
 }
