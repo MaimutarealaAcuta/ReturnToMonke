@@ -79,7 +79,7 @@ public class CharacterStats : MonoBehaviour
 
     private void Die()
     {
-        throw new NotImplementedException();
+        GameManager._instance.uiScript.ToggleEndGameUI(EndGameUI.EndGameType.Death);
     }
 
     public int GetStatValue(string key)
