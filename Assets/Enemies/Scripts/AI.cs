@@ -7,11 +7,12 @@ using static UnityEditor.PlayerSettings;
 
 public class AI : MonoBehaviour
 {
-    public float hp;
+    public int hp;
     public float speed;
     public float distanceTarget;
     public float rotationSpeedDegree;
     public float attackRange;
+    public int damage;
 
     private Vector3 target;
     private Rigidbody rb;
@@ -41,15 +42,38 @@ public class AI : MonoBehaviour
         rb.MoveRotation(rot);
     }
 
-    private void Update()
-    {
-        
-    }
-
     private Vector3 getDirection(Vector3 target)
     {
         Vector3 direction = (target - transform.position);
         direction.y = 0;
         return direction.normalized;
+    }
+
+    public void setHp(int hp)
+    {
+        this.hp = hp;
+    }
+
+    public int getHp()
+    {
+        return hp;
+    }
+
+    private void takeDamage(int value)
+    {
+        hp -= value;
+        if (hp < 0)
+            death();
+    }
+
+    private void attackPlayer()
+    {
+        GameManager._instance.characterStats.TakeDamange(damage);
+    }
+
+    private void death()
+    {
+        // Spawn DNA
+        Destroy(gameObject);
     }
 }
