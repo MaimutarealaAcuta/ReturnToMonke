@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Monolith
   - Enemy
+  - Item
   layers:
   - Default
   - TransparentFX

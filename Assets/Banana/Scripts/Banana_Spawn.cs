@@ -14,6 +14,9 @@ public class Banana_Spawn : MonoBehaviour
     public float spawnTimeMin;
     public float spawnTimeMax;
 
+    public int maxItems;
+    private int currentItems;
+
     private float spawnTime;
     private float currentTime;
 
@@ -27,7 +30,11 @@ public class Banana_Spawn : MonoBehaviour
         currentTime += Time.deltaTime;
         if (currentTime >= spawnTime)
         {
-            Spawn.SpawnObject(minX, minY, maxX, maxY, spawnObject);
+            currentItems = GameObject.FindGameObjectsWithTag("Item").Length;
+            if(currentItems < maxItems)
+            {
+                Spawn.SpawnObject(minX, minY, maxX, maxY, spawnObject);
+            }
             spawnTime = Random.Range(spawnTimeMin, spawnTimeMax);
             currentTime = 0;
         }
