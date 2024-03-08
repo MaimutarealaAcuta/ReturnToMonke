@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
         if (_instance == null)
         {
             _instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public PlayerController playerController;
     public UIScript uiScript;
     public DNAScript dnaScript;
+    public Metrics metrics;
 
 
     void Start()

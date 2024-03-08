@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!canMove)
             return;
+
         if (isPC)
         {
             RaycastHit hit;
