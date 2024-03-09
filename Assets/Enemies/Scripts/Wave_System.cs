@@ -5,7 +5,10 @@ using UnityEngine;
 
 public class Wave_System : MonoBehaviour
 {
-    public GameObject spawnObject;
+    [SerializeField]
+    private GameObject[] spawnEnemies;
+    [SerializeField]
+    private float strongEnemiesChance = 0.3f;
     public float maxX;
     public float maxY;
     public float minX;
@@ -50,7 +53,8 @@ public class Wave_System : MonoBehaviour
                 currentSpawnTime += Time.deltaTime;
                 if (currentSpawnTime >= spawnTime)
                 {
-                    Spawn.SpawnObject(minX, minY, maxX, maxY, spawnObject);
+                    SpawnEnemy();
+                    
                     currentSpawnTime = 0;
                     spawnTime = Random.Range(spawnTimeMin, spawnTimeMax);
                 }
@@ -66,5 +70,11 @@ public class Wave_System : MonoBehaviour
                 currentSpawnTime = 0;
             }
         }
+    }
+
+    private void SpawnEnemy()
+    {
+        GameObject spawnEnemie = UnityEngine.Random.value >= strongEnemiesChance ? spawnEnemies[0] : spawnEnemies[1];
+        Spawn.SpawnObject(minX, minY, maxX, maxY, spawnEnemie);
     }
 }
