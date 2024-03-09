@@ -5,10 +5,17 @@ using UnityEngine;
 public class RegenField : MonoBehaviour
 {
     private int regenZoneRadiusLevel = 0;
-    private const int regenZoneRadiusModifier = 100;
+    private const int regenZoneRadiusModifier = 250;
 
     [SerializeField]
     private int healValue = 10;
+
+    private int[] healValues =
+    {
+        10,             // Level 1
+        50,             // Level 2
+        100,            // Level 3
+    };
 
     [SerializeField]
     private int healCooldownSec = 5;
@@ -28,6 +35,7 @@ public class RegenField : MonoBehaviour
         regenZoneRadiusLevel++;
 
         transform.localScale += new Vector3(1, 1, 0) * regenZoneRadiusLevel * regenZoneRadiusModifier;
+        healValue = healValues[regenZoneRadiusLevel - 1];
     }
 
     public void OnTriggerStay(Collider other)

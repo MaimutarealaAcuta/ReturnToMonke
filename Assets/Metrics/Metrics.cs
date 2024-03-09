@@ -59,7 +59,7 @@ public class Metrics : MonoBehaviour
     {
         gameOver = true;
         AddScore((int)timePlayed * 10);
-        
+        AddScore(spentDNA / 2);
 
         StringBuilder sb = new StringBuilder();
 

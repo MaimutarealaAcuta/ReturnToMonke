@@ -1853,7 +1853,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5205194507309437849
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1890,7 +1890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endGameText: {fileID: 4361278427282777152}
-  metricsText: {fileID: 0}
+  metricsText: {fileID: 7385265700930220437}
 --- !u!222 &6908673598958500086
 CanvasRenderer:
   m_ObjectHideFlags: 0
