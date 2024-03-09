@@ -523,6 +523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnEnemies:
   - {fileID: 1511851392003221923, guid: 52d7b7a86629d234fac3841ffe7aa4bb, type: 3}
+  spawnStrongEnemies:
   - {fileID: 4234558568060373229, guid: 3913f40c6bc2dab43a55109bf8f6b917, type: 3}
   strongEnemiesChance: 0.3
   maxX: 10

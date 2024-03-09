@@ -8,6 +8,8 @@ public class Wave_System : MonoBehaviour
     [SerializeField]
     private GameObject[] spawnEnemies;
     [SerializeField]
+    private GameObject[] spawnStrongEnemies;
+    [SerializeField]
     private float strongEnemiesChance = 0.3f;
     public float maxX;
     public float maxY;
@@ -74,7 +76,11 @@ public class Wave_System : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        GameObject spawnEnemie = UnityEngine.Random.value >= strongEnemiesChance ? spawnEnemies[0] : spawnEnemies[1];
+        GameObject randEnemy = spawnEnemies[Random.Range(0, spawnEnemies.Length)];
+        GameObject randStrongEnemy = spawnStrongEnemies[Random.Range(0, spawnStrongEnemies.Length)];
+
+        GameObject spawnEnemie = Random.value >= strongEnemiesChance ? randEnemy : randStrongEnemy;
+
         Spawn.SpawnObject(minX, minY, maxX, maxY, spawnEnemie);
     }
 }

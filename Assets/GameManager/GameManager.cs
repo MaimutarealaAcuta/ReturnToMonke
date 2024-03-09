@@ -26,4 +26,6 @@ public class GameManager : MonoBehaviour
     public UIScript uiScript;
     public DNAScript dnaScript;
     public Metrics metrics;
+
+    public int currentWave = 1;
 }
