@@ -10,7 +10,7 @@ public class EnemyAttackArea : MonoBehaviour
     {
         var damageable = other.gameObject.GetComponent<IDamageable>();
 
-        if (damageable != null)
+        if (damageable != null && (other.CompareTag("Player") || other.CompareTag("Monolith")))
         {
             inAttakingArea = true;
             Damageables.Add(damageable);
@@ -21,7 +21,7 @@ public class EnemyAttackArea : MonoBehaviour
     {
         var damageable = other.GetComponent<IDamageable>();
 
-        if (damageable != null)
+        if (damageable != null && (other.CompareTag("Player") || other.CompareTag("Monolith")))
         {
             inAttakingArea = false;
             Damageables.Remove(damageable);

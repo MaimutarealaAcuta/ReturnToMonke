@@ -4,15 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 using static UnityEditor.PlayerSettings;
+using static UnityEngine.Rendering.DebugUI;
 
-public class AI : MonoBehaviour
+public class AI : MonoBehaviour, IDamageable
 {
     public int hp;
     public float speed;
     public float distanceTarget;
     public float rotationSpeedDegree;
     public float attackRange;
-    public int damage;
+
+    [SerializeField]
+    private EnemyAttackArea attackArea;
 
     private Vector3 target;
     private Rigidbody rb;
@@ -35,11 +38,14 @@ public class AI : MonoBehaviour
             target = Vector3.zero;
         }
 
-        Vector3 direction = getDirection(target);
-        Quaternion rot_dir = Quaternion.LookRotation(direction, Vector3.up);
-        rb.MovePosition(transform.position + direction * speed * Time.fixedDeltaTime);
-        Quaternion rot = Quaternion.RotateTowards(rb.rotation, rot_dir, rotationSpeedDegree * Time.fixedDeltaTime);
-        rb.MoveRotation(rot);
+        if (!attackArea.inAttakingArea)
+        {
+            Vector3 direction = getDirection(target);
+            Quaternion rot_dir = Quaternion.LookRotation(direction, Vector3.up);
+            rb.MovePosition(transform.position + direction * speed * Time.fixedDeltaTime);
+            Quaternion rot = Quaternion.RotateTowards(rb.rotation, rot_dir, rotationSpeedDegree * Time.fixedDeltaTime);
+            rb.MoveRotation(rot);
+        }
     }
 
     private Vector3 getDirection(Vector3 target)
@@ -49,31 +55,16 @@ public class AI : MonoBehaviour
         return direction.normalized;
     }
 
-    public void setHp(int hp)
-    {
-        this.hp = hp;
-    }
-
-    public int getHp()
-    {
-        return hp;
-    }
-
-    private void takeDamage(int value)
-    {
-        hp -= value;
-        if (hp < 0)
-            death();
-    }
-
-    private void attackPlayer()
-    {
-        GameManager._instance.characterStats.Damage(damage);
-    }
-
     private void death()
     {
         // Spawn DNA
         Destroy(gameObject);
+    }
+
+    public void Damage(int damageAmount)
+    {
+        hp -= damageAmount;
+        if (hp < 0)
+            death();
     }
 }
