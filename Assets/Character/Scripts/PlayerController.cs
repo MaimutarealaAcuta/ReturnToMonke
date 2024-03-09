@@ -11,16 +11,23 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private CharacterStats characterStats;
+    private CharacterController characterController;
 
     private Vector2 move, mouseLook, gamepadLook;
     private Vector3 rotationTarget;
     
     private bool canMove = true;
+    public bool isMoving = false;
+
+    private void Start()
+    {
+        characterController = GetComponent<CharacterController>();
+    }
 
     private void Update()
     {
-        if (!canMove)
-            return;
+        if (!canMove) return;
+
         if (isPC)
         {
             RaycastHit hit;
@@ -43,6 +50,18 @@ public class PlayerController : MonoBehaviour
             {
                 movePlayerWithAim();
             }
+        }
+    }
+
+    private bool IsMoving()
+    {
+        if (move.x != 0 || move.y != 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
@@ -74,7 +93,7 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = new(move.x, 0f, move.y);
 
         //transform.Translate(speed * Time.deltaTime * movement, Space.World);
-        Translate(movement);
+        Translate(movement.normalized);
     }
 
     private void movePlayer()
@@ -87,7 +106,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //transform.Translate(speed * Time.deltaTime * movement, Space.World);
-        Translate(movement);
+        Translate(movement.normalized);
     }
 
     public void toggleMovement()
@@ -98,16 +117,22 @@ public class PlayerController : MonoBehaviour
     private void Translate (Vector3 movement)
     {
         string agilityKey = GameManager._instance.skillTree.getSkillName(SkillTree.ESkill.Agility);
-        float agility = 1 + (float)characterStats.GetStatValue(agilityKey) / 20;
+        float agility = 1 + (float)characterStats.GetStatValue(agilityKey) / 15;
 
         Vector3 translation = agility * speed * Time.deltaTime * movement;
 
-        transform.Translate(translation, Space.World);
+        //transform.Translate(translation, Space.World);
+        characterController.Move(translation);
+    }
+
+    public float GetMoveAmount()
+    {
+        return Mathf.Clamp01(Mathf.Abs(move.x) + Mathf.Abs(move.y));
     }
 
     #region Events
 
-    public void OnMove(InputAction.CallbackContext context)
+    public void OnMoveInput(InputAction.CallbackContext context)
     {
         move = context.ReadValue<Vector2>();
     }
