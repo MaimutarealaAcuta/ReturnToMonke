@@ -159,10 +159,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monolith: {fileID: 161607881}
+  characterStats: {fileID: 0}
   skillTree: {fileID: 1877938703295597195}
   playerController: {fileID: 922279835}
   uiScript: {fileID: 896168066}
   dnaScript: {fileID: 1877938703295597200}
+  metrics: {fileID: 0}
 --- !u!4 &11515576
 Transform:
   m_ObjectHideFlags: 0
@@ -557,6 +559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 8
   isPC: 1
+  characterStats: {fileID: 0}
 --- !u!1 &1421153219
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,6 +686,7 @@ MonoBehaviour:
   minY: 3
   spawnTimeMin: 3
   spawnTimeMax: 10
+  maxItems: 0
 --- !u!1 &2043983054
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,7 +1097,7 @@ PrefabInstance:
     - target: {fileID: 5022718534910862787, guid: 704da3190190c0448b446009d84af254,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.5
+      value: 1.57
       objectReference: {fileID: 0}
     - target: {fileID: 5022718534910862787, guid: 704da3190190c0448b446009d84af254,
         type: 3}

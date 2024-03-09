@@ -87,22 +87,27 @@ public class SkillTree : MonoBehaviour
         switch (skill)
         {
             case ESkill.Strength:
-                //gameManager.player.strength++;
+                gameManager.characterStats.SetStatValue(getSkillName(skill), skillLevels[(int)skill]);
+                // increase damage
                 break;
             case ESkill.Agility:
                 gameManager.characterStats.SetStatValue(getSkillName(skill), skillLevels[(int)skill]);
                 break;
             case ESkill.Vitality:
-                //gameManager.player.vitality++;
+                gameManager.characterStats.SetStatValue(getSkillName(skill), skillLevels[(int)skill]);
+                gameManager.characterStats.increaseMaxHealth();
                 break;
             case ESkill.Faith:
-                //gameManager.player.faith++;
+                gameManager.characterStats.SetStatValue(getSkillName(skill), skillLevels[(int)skill]);
+                // increase critical damage chance
                 break;
             case ESkill.Luck:
-                //gameManager.player.luck++;
+                gameManager.characterStats.SetStatValue(getSkillName(skill), skillLevels[(int)skill]);
+                // increase dna drop
                 break;
             case ESkill.Vision:
-                //gameManager.player.vision++;
+                gameManager.characterStats.SetStatValue(getSkillName(skill), skillLevels[(int)skill]);
+                // increase vision range
                 break;
             case ESkill.Regen:
                 gameManager.monolith.increaseRegenRadius();
@@ -111,6 +116,7 @@ public class SkillTree : MonoBehaviour
                 // decrease fog of war
                 break;
             case ESkill.Defense:
+                // attack random enemies in a range - turret
                 break;
             default:
                 break;
