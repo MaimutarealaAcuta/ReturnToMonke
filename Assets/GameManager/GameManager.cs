@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
 
     // singleton pattern
-    
     public static GameManager _instance { get; private set; }
 
     private void Awake()
@@ -29,16 +26,4 @@ public class GameManager : MonoBehaviour
     public UIScript uiScript;
     public DNAScript dnaScript;
     public Metrics metrics;
-
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
