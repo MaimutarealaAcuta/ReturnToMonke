@@ -29,6 +29,8 @@ public class PlayerAttack : MonoBehaviour
 
     private void CheckForAttack()
     {
+        if (!GameManager._instance.playerController.canMove) return;
+        
         if (Input.GetMouseButtonDown(0) && Time.time - lastAttackTime >= attackCooldown)
         {
             animator.SetTrigger("attack");

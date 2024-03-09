@@ -88,6 +88,10 @@ public class SkillTree : MonoBehaviour
         {
             case ESkill.Strength:
                 gameManager.characterStats.SetStatValue(getSkillName(skill), skillLevels[(int)skill]);
+                if(isMaxxed(skill))
+                {
+                    gameManager.playerController.toggleWeapon();
+                }
                 // increase damage
                 break;
             case ESkill.Agility:

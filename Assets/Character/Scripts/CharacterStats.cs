@@ -81,6 +81,11 @@ public class CharacterStats : MonoBehaviour, IDamageable
         Debug.Log(transform.name + " heals for " + healAmount);
     }
 
+    public void HealPercentage(int percentage)
+    {
+        int healAmount = (int)(maxHealth * percentage / 100);
+        Heal(healAmount);
+    }
     public bool IsAtMaxHealth()
     {
         return currentHealth == maxHealth;
@@ -121,5 +126,7 @@ public class CharacterStats : MonoBehaviour, IDamageable
         float healthPercentage = (float)currentHealth / maxHealth;
         maxHealth = newMaxHealth;
         SetCurrentHealth((int)(maxHealth * healthPercentage));
+
+        transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
     }
 }

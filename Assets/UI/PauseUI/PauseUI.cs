@@ -15,7 +15,7 @@ public class PauseUI : MonoBehaviour
             Time.timeScale = 1;
             gameObject.SetActive(false);
             GameManager._instance.playerController.toggleMovement();
-            Cursor.visible = false;
+            //Cursor.visible = false;
         }
         else
         {
@@ -23,13 +23,14 @@ public class PauseUI : MonoBehaviour
             Time.timeScale = 0;
             gameObject.SetActive(true);
             GameManager._instance.playerController.toggleMovement();
-            Cursor.visible = true;
+            //Cursor.visible = true;
 
         }
     }
     
     public void Quit()
     {
+        Time.timeScale = 1;
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 }
