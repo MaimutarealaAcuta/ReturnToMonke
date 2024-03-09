@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterStats : MonoBehaviour
+public class CharacterStats : MonoBehaviour, IDamageable
 {
     private int maxHealth = 100;
     [SerializeField]
@@ -43,7 +43,7 @@ public class CharacterStats : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.T))
         {
-            TakeDamange(10);
+            Damage(10);
         }
         if (Input.GetKeyUp(KeyCode.H))
         {
@@ -57,10 +57,10 @@ public class CharacterStats : MonoBehaviour
         healthVolume.updateVolume((float)currentHealth / maxHealth);
     }
 
-    public void TakeDamange(int damange)
+    public void Damage(int damage)
     {
-        SetCurrentHealth(currentHealth - damange);
-        Debug.Log(transform.name + " takes " + damange + " dmg.");
+        SetCurrentHealth(currentHealth - damage);
+        Debug.Log(transform.name + " takes " + damage + " dmg.");
 
         if (currentHealth <= 0)
         {

@@ -68,7 +68,7 @@ public class AI : MonoBehaviour
 
     private void attackPlayer()
     {
-        GameManager._instance.characterStats.TakeDamange(damage);
+        GameManager._instance.characterStats.Damage(damage);
     }
 
     private void death()
