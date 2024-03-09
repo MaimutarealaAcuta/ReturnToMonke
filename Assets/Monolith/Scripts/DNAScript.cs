@@ -18,6 +18,7 @@ public class DNAScript : MonoBehaviour
         {
             DNA_points -= amount;
             updateUI();
+            GameManager._instance.metrics.AddSpentDNA(amount);
             return true;
         }
         Debug.Log("Insufficient funds!");

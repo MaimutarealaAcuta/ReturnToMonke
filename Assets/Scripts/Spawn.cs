@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
+    private static float hightConstant = 1.5f;
     public static void SpawnObject(float minX, float minY, float maxX, float maxY, GameObject spawnObject)
     {
         Vector3 pos;
@@ -22,19 +23,19 @@ public class Spawn : MonoBehaviour
         {
             // Cadran I
             
-            pos = new(x, 1, y);
+            pos = new(x, hightConstant, y);
         } else if (side <= 50)
         {
             // Cadran II
-            pos = new(-x, 1, y);
+            pos = new(-x, hightConstant, y);
         } else if (side <= 75)
         {
             // Cadran III
-            pos = new(-x, 1, -y);
+            pos = new(-x, hightConstant, -y);
         } else
         {
             // Cadran IV
-            pos = new(x, 1, -y);
+            pos = new(x, hightConstant, -y);
         }
 
         Instantiate(spawnObject, pos, spawnObject.transform.rotation);

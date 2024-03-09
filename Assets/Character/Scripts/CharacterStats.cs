@@ -24,6 +24,9 @@ public class CharacterStats : MonoBehaviour
     [SerializeField]
     Dictionary<string, Stat> stats = new Dictionary<string, Stat>();
 
+    [SerializeField]
+    private HealthVolume healthVolume;
+
     private void Awake()
     {
         currentHealth = maxHealth;
@@ -47,10 +50,16 @@ public class CharacterStats : MonoBehaviour
             Heal(10);
         }
     }
+    
+    private void SetCurrentHealth(int health)
+    {
+        currentHealth = health;
+        healthVolume.updateVolume((float)currentHealth / maxHealth);
+    }
 
     public void TakeDamange(int damange)
     {
-        currentHealth -= damange;
+        SetCurrentHealth(currentHealth - damange);
         Debug.Log(transform.name + " takes " + damange + " dmg.");
 
         if (currentHealth <= 0)
@@ -63,11 +72,11 @@ public class CharacterStats : MonoBehaviour
     {
         if (currentHealth + healAmount > maxHealth)
         {
-            currentHealth = maxHealth;
+            SetCurrentHealth(maxHealth);
         }
         else
         {
-            currentHealth += healAmount;
+            SetCurrentHealth(currentHealth + healAmount);
         }
         Debug.Log(transform.name + " heals for " + healAmount);
     }
@@ -79,7 +88,7 @@ public class CharacterStats : MonoBehaviour
 
     private void Die()
     {
-        throw new NotImplementedException();
+        GameManager._instance.uiScript.ToggleEndGameUI(EndGameUI.EndGameType.Death);
     }
 
     public int GetStatValue(string key)
@@ -104,5 +113,13 @@ public class CharacterStats : MonoBehaviour
             Debug.LogWarning($"Stat with key '{key}' not found.");
             //stats.Add(key, new Stat(value));
         }
+    }
+
+    public void increaseMaxHealth()
+    {
+        int newMaxHealth = (int)(maxHealth * 1.5f);
+        float healthPercentage = (float)currentHealth / maxHealth;
+        maxHealth = newMaxHealth;
+        SetCurrentHealth((int)(maxHealth * healthPercentage));
     }
 }

@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+
         if (!canMove) return;
 
         if (isPC)
