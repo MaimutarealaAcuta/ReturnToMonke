@@ -30,6 +30,6 @@ public class PauseUI : MonoBehaviour
 
     public void Quit()
     {
-        //UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 }
