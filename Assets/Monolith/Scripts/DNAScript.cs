@@ -21,7 +21,7 @@ public class DNAScript : MonoBehaviour
             GameManager._instance.metrics.AddSpentDNA(amount);
             return true;
         }
-        Debug.Log("Insufficient funds!");
+        GameManager._instance.uiScript.dnaPanel.insufficientFunds();
         return false;
     }
     
