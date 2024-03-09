@@ -37,7 +37,7 @@ public class EndGameUI : MonoBehaviour
 
     public void MainMenu()
     {
-        // load the main menu scene
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
     
 }

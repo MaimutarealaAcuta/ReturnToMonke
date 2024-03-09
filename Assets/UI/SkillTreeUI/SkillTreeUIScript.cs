@@ -31,12 +31,12 @@ public class SkillTreeUIScript : MonoBehaviour
 
         if (gameObject.activeSelf)
         {
-            //Cursor.lockState = CursorLockMode.None;
+            Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
         else
         {
-            //Cursor.lockState = CursorLockMode.Locked;
+            Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = false;
         }
     }
