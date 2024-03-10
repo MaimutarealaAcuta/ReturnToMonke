@@ -69,7 +69,7 @@ public class SkillTree : MonoBehaviour
         new int[] { 200, 500, 1000  }  // Defense
     };
 
-    int getCurrentLevel (ESkill skill)
+    public int getCurrentLevel (ESkill skill)
     {
         return skillLevels[(int)skill];
     }
