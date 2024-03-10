@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterStats : MonoBehaviour
+public class CharacterStats : MonoBehaviour, IDamageable
 {
     private int maxHealth = 100;
     [SerializeField]
@@ -26,9 +26,11 @@ public class CharacterStats : MonoBehaviour
 
     [SerializeField]
     private HealthVolume healthVolume;
+    private AudioManager audioManager;
 
     private void Awake()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         currentHealth = maxHealth;
 
         stats.Add("Strength", new Stat(defaultStrenght));
@@ -43,7 +45,7 @@ public class CharacterStats : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.T))
         {
-            TakeDamange(10);
+            Damage(10);
         }
         if (Input.GetKeyUp(KeyCode.H))
         {
@@ -57,10 +59,11 @@ public class CharacterStats : MonoBehaviour
         healthVolume.updateVolume((float)currentHealth / maxHealth);
     }
 
-    public void TakeDamange(int damange)
+    public void Damage(int damage)
     {
-        SetCurrentHealth(currentHealth - damange);
-        Debug.Log(transform.name + " takes " + damange + " dmg.");
+        audioManager.playSFX(audioManager.hitSoundEnemy);
+        SetCurrentHealth(currentHealth - damage);
+        Debug.Log(transform.name + " takes " + damage + " dmg.");
 
         if (currentHealth <= 0)
         {
@@ -81,6 +84,11 @@ public class CharacterStats : MonoBehaviour
         Debug.Log(transform.name + " heals for " + healAmount);
     }
 
+    public void HealPercentage(int percentage)
+    {
+        int healAmount = (int)(maxHealth * percentage / 100);
+        Heal(healAmount);
+    }
     public bool IsAtMaxHealth()
     {
         return currentHealth == maxHealth;
@@ -121,5 +129,7 @@ public class CharacterStats : MonoBehaviour
         float healthPercentage = (float)currentHealth / maxHealth;
         maxHealth = newMaxHealth;
         SetCurrentHealth((int)(maxHealth * healthPercentage));
+
+        transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
     }
 }

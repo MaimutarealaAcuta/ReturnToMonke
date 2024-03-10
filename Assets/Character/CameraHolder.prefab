@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   smoothTime: 0.3
-  offset: {x: 0, y: 5, z: -7}
+  offset: {x: 0, y: 1, z: -3}
 --- !u!1 &5151381345012153833
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,4 +199,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactorSource: {fileID: 0}
-  interactRange: 5
+  interactRange: 10

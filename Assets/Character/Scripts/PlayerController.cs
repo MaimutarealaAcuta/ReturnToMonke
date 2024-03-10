@@ -16,8 +16,16 @@ public class PlayerController : MonoBehaviour
     private Vector2 move, mouseLook, gamepadLook;
     private Vector3 rotationTarget;
     
-    private bool canMove = true;
-    public bool isMoving = false;
+    public bool canMove = true;
+
+    [SerializeField]
+    private GameObject simpleWeapon;
+    [SerializeField]
+    private GameObject advancedWeapon;
+    [SerializeField]
+    private GameObject glasses;
+    [SerializeField]
+    private GameObject armor;
 
     private void Start()
     {
@@ -91,7 +99,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        Vector3 movement = new(move.x, 0f, move.y);
+        Vector3 movement = new(move.x, -1f, move.y);
 
         //transform.Translate(speed * Time.deltaTime * movement, Space.World);
         Translate(movement.normalized);
@@ -99,7 +107,7 @@ public class PlayerController : MonoBehaviour
 
     private void movePlayer()
     {
-        Vector3 movement = new(move.x, 0f, move.y);
+        Vector3 movement = new(move.x, -1f, move.y);
 
         if (movement != Vector3.zero)
         {
@@ -129,6 +137,22 @@ public class PlayerController : MonoBehaviour
     public float GetMoveAmount()
     {
         return Mathf.Clamp01(Mathf.Abs(move.x) + Mathf.Abs(move.y));
+    }
+
+    public void toggleWeapon()
+    {
+        simpleWeapon.SetActive(false);
+        advancedWeapon.SetActive(true);
+    }
+
+    public void toggleGlasses()
+    {
+        glasses.SetActive(true);
+    }
+
+    public void toggleArmor()
+    {
+        armor.SetActive(true);
     }
 
     #region Events

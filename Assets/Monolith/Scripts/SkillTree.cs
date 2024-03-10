@@ -69,7 +69,7 @@ public class SkillTree : MonoBehaviour
         new int[] { 200, 500, 1000  }  // Defense
     };
 
-    int getCurrentLevel (ESkill skill)
+    public int getCurrentLevel (ESkill skill)
     {
         return skillLevels[(int)skill];
     }
@@ -88,6 +88,10 @@ public class SkillTree : MonoBehaviour
         {
             case ESkill.Strength:
                 gameManager.characterStats.SetStatValue(getSkillName(skill), skillLevels[(int)skill]);
+                if(isMaxxed(skill))
+                {
+                    gameManager.playerController.toggleWeapon();
+                }
                 // increase damage
                 break;
             case ESkill.Agility:
@@ -96,6 +100,10 @@ public class SkillTree : MonoBehaviour
             case ESkill.Vitality:
                 gameManager.characterStats.SetStatValue(getSkillName(skill), skillLevels[(int)skill]);
                 gameManager.characterStats.increaseMaxHealth();
+                if (isMaxxed(skill))
+                {
+                    gameManager.playerController.toggleArmor();
+                }
                 break;
             case ESkill.Faith:
                 gameManager.characterStats.SetStatValue(getSkillName(skill), skillLevels[(int)skill]);
@@ -108,6 +116,10 @@ public class SkillTree : MonoBehaviour
             case ESkill.Vision:
                 gameManager.characterStats.SetStatValue(getSkillName(skill), skillLevels[(int)skill]);
                 // increase vision range
+                if (isMaxxed(skill))
+                {
+                    gameManager.playerController.toggleGlasses();
+                }
                 break;
             case ESkill.Regen:
                 gameManager.monolith.increaseRegenRadius();
