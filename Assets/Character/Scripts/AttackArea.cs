@@ -9,7 +9,7 @@ public class AttackArea : MonoBehaviour
     {
         var damageable = other.GetComponent<IDamageable>();
 
-        if (damageable != null)
+        if (damageable != null && !other.CompareTag("Monolith"))
         {
             Damageables.Add(damageable);
         }

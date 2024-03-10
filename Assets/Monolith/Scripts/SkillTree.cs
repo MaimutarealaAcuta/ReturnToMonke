@@ -61,7 +61,7 @@ public class SkillTree : MonoBehaviour
         new int[] { 10, 30, 50, 75, 100, 130, 180, 200, 400, 500  },  // Strength
         new int[] { 10, 30, 50, 75, 100, 130, 180, 200, 400, 500  },  // Agility
         new int[] { 10, 30, 50, 75, 100, 130, 180, 200, 400, 500  },  // Vitality
-        new int[] { 10, 30, 50, 75, 100, 130, 180, 200, 400, 500  },  // Faitih
+        new int[] { 10, 30, 50, 75, 100, 130, 180, 200, 400, 500  },  // Faith
         new int[] { 10, 30, 50, 75, 100, 130, 180, 200, 400, 500  },  // Luck
         new int[] { 50, 120, 200, 300, 500 },  // Vision
         new int[] { 200, 500, 1000  },  // Regen
@@ -105,6 +105,10 @@ public class SkillTree : MonoBehaviour
                 break;
             case ESkill.Agility:
                 gameManager.characterStats.SetStatValue(getSkillName(skill), skillLevels[(int)skill]);
+                if (isMaxxed(skill))
+                {
+                    gameManager.playerController.toggleShoes();
+                }
                 break;
             case ESkill.Vitality:
                 gameManager.characterStats.SetStatValue(getSkillName(skill), skillLevels[(int)skill]);
@@ -117,14 +121,22 @@ public class SkillTree : MonoBehaviour
             case ESkill.Faith:
                 gameManager.characterStats.SetStatValue(getSkillName(skill), skillLevels[(int)skill]);
                 // increase critical damage chance
+                if (isMaxxed(skill))
+                {
+                    gameManager.playerController.toggleHalo();
+                }
                 break;
             case ESkill.Luck:
                 gameManager.characterStats.SetStatValue(getSkillName(skill), skillLevels[(int)skill]);
                 // increase dna drop
+                if (isMaxxed(skill))
+                {
+                    gameManager.playerController.toggleClover();
+                }
                 break;
             case ESkill.Vision:
                 gameManager.characterStats.SetStatValue(getSkillName(skill), skillLevels[(int)skill]);
-                // increase vision range
+                RenderSettings.fogDensity -= 0.01f;
                 if (isMaxxed(skill))
                 {
                     gameManager.playerController.toggleGlasses();

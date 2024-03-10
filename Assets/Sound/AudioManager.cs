@@ -21,7 +21,7 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        musicSource.clip = combatMusic;
+        musicSource.clip = waitingMusic;
         musicSource.Play();
     }
 
@@ -35,7 +35,6 @@ public class AudioManager : MonoBehaviour
     {
         sfxSource.PlayOneShot(clip);
     }
-
     public void buttonPressed()
     {
         sfxSource.PlayOneShot(buttonSound);

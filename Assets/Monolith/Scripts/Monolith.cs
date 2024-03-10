@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Monolith : MonoBehaviour, IInteractable, IDamageable
@@ -14,6 +15,8 @@ public class Monolith : MonoBehaviour, IInteractable, IDamageable
 
     private bool gameOver = false;
     private AudioManager audioManager;
+
+    private bool notifCooldown = false;
 
     private void Start()
     {
@@ -43,6 +46,17 @@ public class Monolith : MonoBehaviour, IInteractable, IDamageable
         audioManager.playSFX(audioManager.hitSoundEnemy);
         health -= damageAmount;
         Debug.Log("Monolith took " + damageAmount + " damage. Health: " + health);
+
+        if(!notifCooldown)
+            StartCoroutine(notifyAttack());
+    }
+
+    IEnumerator notifyAttack()
+    {
+        notifCooldown = true;
+        gameObject.GetComponentInChildren<MonolithBubble>().ShowWaveText("The monolith is under attack!");
+        yield return new WaitForSeconds(30);
+        notifCooldown = false;
     }
 
     public void increaseRegenRadius()

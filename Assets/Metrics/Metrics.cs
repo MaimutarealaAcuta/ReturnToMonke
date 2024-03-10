@@ -16,7 +16,8 @@ public class Metrics : MonoBehaviour
 
     void Update()
     {
-        if (gameOver) return;
+        bool gamePaused = GameManager._instance.uiScript.endGameUI.gameObject.activeSelf;
+        if (gameOver || gamePaused) return;
         timePlayed += Time.deltaTime;
     }
 
