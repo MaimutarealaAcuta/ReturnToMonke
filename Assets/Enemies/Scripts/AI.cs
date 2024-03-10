@@ -17,6 +17,9 @@ public class AI : MonoBehaviour, IDamageable
     [SerializeField]
     private EnemyAttackArea attackArea;
 
+    [SerializeField]
+    private int DNAdrop = 1;
+
     private Vector3 target;
     private Rigidbody rb;
 
@@ -58,7 +61,15 @@ public class AI : MonoBehaviour, IDamageable
 
     private void death()
     {
-        // Spawn DNA
+        GameManager._instance.spawnSystem.removeEnemy(this.gameObject);
+        GameManager._instance.playerController.gameObject.GetComponentInChildren<AttackArea>().removeEnemy(this);
+        GameManager._instance.metrics.AddEnemyKilled();
+
+        GameObject helix = Instantiate(GameManager._instance.helixPrefab,
+                                       transform.position + new Vector3(0, 1.5f, 0),
+                                       new Quaternion(90, 0, 0, 0));
+
+        helix.GetComponent<HelixScript>().setDNAvalue(DNAdrop);
         Destroy(gameObject);
     }
 

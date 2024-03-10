@@ -26,6 +26,10 @@ public class GameManager : MonoBehaviour
     public UIScript uiScript;
     public DNAScript dnaScript;
     public Metrics metrics;
+    public WaveSystem waveSystem;
+    public SpawnSystem spawnSystem;
+
+    public GameObject helixPrefab;
 
     public int currentWave = 1;
 }

@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 3457831071687691633}
   - component: {fileID: 3734463754662080950}
   - component: {fileID: 8789368572012293422}
-  - component: {fileID: 1269808621080331080}
+  - component: {fileID: 1805207998139517125}
+  - component: {fileID: 4257920754056409497}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -53,6 +54,8 @@ MonoBehaviour:
   uiScript: {fileID: 0}
   dnaScript: {fileID: 0}
   metrics: {fileID: 8789368572012293422}
+  waveSystem: {fileID: 1805207998139517125}
+  spawnSystem: {fileID: 4257920754056409497}
   currentWave: 1
 --- !u!114 &8789368572012293422
 MonoBehaviour:
@@ -66,7 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8bfe1d63f3f57a438528e7e9868bc76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1269808621080331080
+--- !u!114 &1805207998139517125
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -75,15 +78,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 149767374390010457}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c981924de263ce46925a350480325b2, type: 3}
+  m_Script: {fileID: 11500000, guid: baa05176c3eb1ae4aaccb4dadb1c1e75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnObject: {fileID: 9166188255673394780, guid: db2516175c738d848a298cef72c38ddf,
-    type: 3}
-  maxX: 380
-  maxZ: 380
-  minX: 140
-  minZ: 90
-  spawnTimeMin: 5
-  spawnTimeMax: 20
-  maxItems: 30
+--- !u!114 &4257920754056409497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149767374390010457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df367118f92fa804a97b52d1d900e18b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnEnemies:
+  - {fileID: 0}
+  spawnStrongEnemies:
+  - {fileID: 0}
+  strongEnemiesChance: 0.3
+  minSpawningTime: 1
+  maxSpawningTime: 10
+  spawnBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 50, y: 0, z: 50}
