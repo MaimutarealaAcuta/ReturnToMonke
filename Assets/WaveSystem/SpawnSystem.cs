@@ -20,7 +20,7 @@ public class SpawnSystem : MonoBehaviour
     [SerializeField]
     private int maxEnemies = 50;
 
-    List<GameObject> enemies = new List<GameObject>();
+    public List<GameObject> enemies = new List<GameObject>();
 
     [SerializeField]
     Bounds spawnBounds = new Bounds(new Vector3(0, 0, 0), new Vector3(100, 0, 100));
