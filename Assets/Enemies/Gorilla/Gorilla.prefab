@@ -878,6 +878,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 5.7713537
       objectReference: {fileID: 0}
+    - target: {fileID: 6804105741979601516, guid: 0bde76ecd4e1c3442ab7497efa1b2abc,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 38b338ab17bb4de47bcf6906997b3859, type: 2}
     - target: {fileID: 7078722787440015773, guid: 0bde76ecd4e1c3442ab7497efa1b2abc,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1083,6 +1088,7 @@ MonoBehaviour:
   rotationSpeedDegree: 180
   attackRange: 5
   attackArea: {fileID: 3518197139360353268}
+  DNAdrop: 7
 --- !u!114 &5430947286570988302
 MonoBehaviour:
   m_ObjectHideFlags: 0

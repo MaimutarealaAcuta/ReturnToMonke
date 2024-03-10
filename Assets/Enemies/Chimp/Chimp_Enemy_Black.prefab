@@ -933,6 +933,7 @@ MonoBehaviour:
   rotationSpeedDegree: 180
   attackRange: 5
   attackArea: {fileID: 759323956257933452}
+  DNAdrop: 5
 --- !u!114 &7925405256467515167
 MonoBehaviour:
   m_ObjectHideFlags: 0

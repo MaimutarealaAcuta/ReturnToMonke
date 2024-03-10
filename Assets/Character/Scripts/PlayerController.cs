@@ -26,7 +26,13 @@ public class PlayerController : MonoBehaviour
     private GameObject glasses;
     [SerializeField]
     private GameObject armor;
-
+    [SerializeField]
+    private GameObject halo;
+    [SerializeField]
+    private GameObject[] shoes;
+    [SerializeField]
+    private GameObject clover;
+        
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -153,6 +159,24 @@ public class PlayerController : MonoBehaviour
     public void toggleArmor()
     {
         armor.SetActive(true);
+    }
+    
+    public void toggleHalo()
+    {
+        halo.SetActive(true);
+    }
+    
+    public void toggleShoes()
+    {
+        foreach (var shoe in shoes)
+        {
+            shoe.SetActive(true);
+        }
+    }
+
+    public void toggleClover()
+    {
+        clover.SetActive(true);
     }
 
     #region Events
