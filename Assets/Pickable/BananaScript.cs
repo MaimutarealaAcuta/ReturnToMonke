@@ -9,5 +9,6 @@ public class BananaScript : PickableScript
     protected override void PickUp()
     {
         GameManager._instance.characterStats.HealPercentage(healPercentage);
+        GameManager._instance.metrics.AddBanana();
     }
 }
