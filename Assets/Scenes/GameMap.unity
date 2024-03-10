@@ -123,6 +123,34 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &155350133 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8043640057812555218, guid: a75cea50caab43f4fa5d202c02af827d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1689483425}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &155350137
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155350133}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8029413726392125436, guid: 00b043156b43b66408c2b4e329f7c544, type: 3}
 --- !u!1001 &422846852
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -831,10 +859,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Env
       objectReference: {fileID: 0}
+    - target: {fileID: 6782164142373194559, guid: a75cea50caab43f4fa5d202c02af827d,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8043640057812555218, guid: a75cea50caab43f4fa5d202c02af827d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 155350137}
   m_SourcePrefab: {fileID: 100100000, guid: a75cea50caab43f4fa5d202c02af827d, type: 3}
 --- !u!4 &1718151308 stripped
 Transform:
