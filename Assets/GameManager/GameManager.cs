@@ -30,6 +30,4 @@ public class GameManager : MonoBehaviour
     public SpawnSystem spawnSystem;
 
     public GameObject helixPrefab;
-
-    public int currentWave = 1;
 }
