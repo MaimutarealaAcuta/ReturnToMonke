@@ -7,7 +7,8 @@ public class BananaScript : PickableScript
     public int healPercentage;
 
     private AudioManager audioManager;
-    private void Start()
+    
+    private new void Start()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }

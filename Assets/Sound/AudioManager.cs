@@ -39,4 +39,9 @@ public class AudioManager : MonoBehaviour
     {
         sfxSource.PlayOneShot(buttonSound);
     }
+
+    public void skillTreeButtonPressed()
+    {
+        sfxSource.PlayOneShot(skillTreeSound);
+    }
 }
