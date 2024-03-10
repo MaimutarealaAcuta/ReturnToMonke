@@ -179,6 +179,7 @@ MonoBehaviour:
   combatMusic: {fileID: 8300000, guid: b1cc15c6f30890848a2bb3c64252d2b1, type: 3}
   waitingMusic: {fileID: 8300000, guid: e8fa356cf0ca610408ebfc714bf2e174, type: 3}
   hitSoundPlayer: {fileID: 8300000, guid: 605611dd6463bbc4090ab6408907d9e8, type: 3}
+  eatingSound: {fileID: 8300000, guid: 916f15547922ee14bb115fe15387a26a, type: 3}
   hitSoundEnemy: {fileID: 8300000, guid: 74198389e177d0948b63ca9a3fb22801, type: 3}
   buttonSound: {fileID: 8300000, guid: 7b3bfdc382c7f9f4ea95a6f9ba0bb85f, type: 3}
   skillTreeSound: {fileID: 8300000, guid: 79e6baad2fd414b82a6d49ce1568d2e5, type: 3}

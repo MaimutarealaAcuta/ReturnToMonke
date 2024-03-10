@@ -11,10 +11,13 @@ public class AudioManager : MonoBehaviour
     public AudioClip waitingMusic;
 
     public AudioClip hitSoundPlayer;
+    public AudioClip eatingSound;
+
     public AudioClip hitSoundEnemy;
 
     public AudioClip buttonSound;
     public AudioClip skillTreeSound;
+    
 
     void Start()
     {
