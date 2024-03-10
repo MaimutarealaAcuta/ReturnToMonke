@@ -24,10 +24,11 @@ public class WaveSystem : MonoBehaviour
     private WaveState currentState = WaveState.Pause;
     private int currentWave = 0;
     private Coroutine waveCycle;
+    private AudioManager audioManager;
 
     private void Start()
     {
-        
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     IEnumerator DoWaveCycle()
@@ -69,6 +70,7 @@ public class WaveSystem : MonoBehaviour
         switch (currentState)
         {
             case WaveState.Starting:
+                audioManager.changeMusic(audioManager.combatMusic);
                 Debug.Log("Wave starting...");
                 monolithBubble.ShowWaveText("Wave starting...");                
                 break;
@@ -78,6 +80,7 @@ public class WaveSystem : MonoBehaviour
                 monolithBubble.ShowWaveText("WAVE " + currentWave);
                 break;
             case WaveState.Stopping:
+                audioManager.changeMusic(audioManager.waitingMusic);
                 Debug.Log("Wave stopping...");
                 GameManager._instance.spawnSystem.StopSpawning();
                 GameManager._instance.metrics.AddWaveSurvived();

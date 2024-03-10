@@ -17,10 +17,12 @@ public class PlayerAttack : MonoBehaviour
     private Animator animator;
 
     private bool isStrongAttack = false;
+    private AudioManager audioManager;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     void Update()
@@ -54,6 +56,7 @@ public class PlayerAttack : MonoBehaviour
         {
             int effectiveDamage = ComputeDamage();
             attackAreaDamageable.Damage(effectiveDamage * (isStrongAttack ? 2 : 1));
+            audioManager.playSFX(audioManager.hitSoundPlayer);
         }
     }
 

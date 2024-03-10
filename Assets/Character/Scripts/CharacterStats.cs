@@ -26,9 +26,11 @@ public class CharacterStats : MonoBehaviour, IDamageable
 
     [SerializeField]
     private HealthVolume healthVolume;
+    private AudioManager audioManager;
 
     private void Awake()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         currentHealth = maxHealth;
 
         stats.Add("Strength", new Stat(defaultStrenght));
@@ -59,6 +61,7 @@ public class CharacterStats : MonoBehaviour, IDamageable
 
     public void Damage(int damage)
     {
+        audioManager.playSFX(audioManager.hitSoundEnemy);
         SetCurrentHealth(currentHealth - damage);
         Debug.Log(transform.name + " takes " + damage + " dmg.");
 
