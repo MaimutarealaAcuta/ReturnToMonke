@@ -9,7 +9,6 @@ public class Monolith : MonoBehaviour, IInteractable, IDamageable
     [Range(0, maxHealth)]
     private int health = 10000;
 
-
     public RegenField regenField;
     public GameObject runesObj;
 

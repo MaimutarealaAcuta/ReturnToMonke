@@ -20,6 +20,7 @@ public class UIScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (endGameUI.gameObject.activeSelf) return;
         if (Input.GetKeyUp(KeyCode.Escape))
         {
             if (skillTreeUI.gameObject.activeSelf)

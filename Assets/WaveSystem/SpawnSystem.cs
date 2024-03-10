@@ -41,6 +41,8 @@ public class SpawnSystem : MonoBehaviour
         {
             if (enemy != null)
             {
+                GameManager._instance.playerController.gameObject.
+                        GetComponentInChildren<AttackArea>().removeEnemy(enemy.GetComponent<IDamageable>());
                 Destroy(enemy);
             }
         }

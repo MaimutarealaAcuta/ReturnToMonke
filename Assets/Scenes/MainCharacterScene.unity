@@ -37,8 +37,8 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_Sun: {fileID: 2073171247}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -159,6 +159,10 @@ MonoBehaviour:
   uiScript: {fileID: 896168066}
   dnaScript: {fileID: 1877938703295597200}
   metrics: {fileID: 0}
+  waveSystem: {fileID: 0}
+  spawnSystem: {fileID: 0}
+  helixPrefab: {fileID: 0}
+  currentWave: 1
 --- !u!4 &11515576
 Transform:
   m_ObjectHideFlags: 0
@@ -841,31 +845,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Monolith
-      objectReference: {fileID: 0}
-    - target: {fileID: 1321367279961621048, guid: 704da3190190c0448b446009d84af254,
-        type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4780264101768601663, guid: 704da3190190c0448b446009d84af254,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 3.6058083
-      objectReference: {fileID: 0}
-    - target: {fileID: 4780264101768601663, guid: 704da3190190c0448b446009d84af254,
-        type: 3}
-      propertyPath: m_Size.z
-      value: 3.0726042
-      objectReference: {fileID: 0}
-    - target: {fileID: 4780264101768601663, guid: 704da3190190c0448b446009d84af254,
-        type: 3}
-      propertyPath: m_Center.x
-      value: 0.15786624
-      objectReference: {fileID: 0}
-    - target: {fileID: 4780264101768601663, guid: 704da3190190c0448b446009d84af254,
-        type: 3}
-      propertyPath: m_Center.z
-      value: 0.14763111
       objectReference: {fileID: 0}
     - target: {fileID: 5022718534910862787, guid: 704da3190190c0448b446009d84af254,
         type: 3}
