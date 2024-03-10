@@ -5,10 +5,13 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public AudioSource musicSource;
+    public AudioSource sfxSource;
     
     public AudioClip combatMusic;
     public AudioClip waitingMusic;
-    public AudioClip menuMusic;
+
+    public AudioClip hitSoundPlayer;
+    public AudioClip hitSoundEnemy;
 
     void Start()
     {
@@ -16,15 +19,14 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void changeMusic(AudioClip clip)
     {
         musicSource.clip=clip;
         musicSource.Play();
+    }
+
+    public void playSFX(AudioClip clip)
+    {
+        sfxSource.PlayOneShot(clip);
     }
 }

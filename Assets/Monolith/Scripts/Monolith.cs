@@ -14,6 +14,12 @@ public class Monolith : MonoBehaviour, IInteractable, IDamageable
     public GameObject runesObj;
 
     private bool gameOver = false;
+    private AudioManager audioManager;
+
+    private void Start()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     public void Update()
     {
@@ -35,6 +41,7 @@ public class Monolith : MonoBehaviour, IInteractable, IDamageable
     
     public void Damage(int damageAmount)
     {
+        audioManager.playSFX(audioManager.hitSoundEnemy);
         health -= damageAmount;
         Debug.Log("Monolith took " + damageAmount + " damage. Health: " + health);
     }

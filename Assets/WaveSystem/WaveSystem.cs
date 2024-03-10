@@ -16,7 +16,7 @@ public class WaveSystem : MonoBehaviour
     int[] waveStateTimes =
     {
         5,
-        80,
+        30,
         5,
         30
     };
