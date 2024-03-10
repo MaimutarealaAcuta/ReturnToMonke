@@ -127,7 +127,7 @@ public class SkillTree : MonoBehaviour
                 break;
             case ESkill.Vision:
                 gameManager.characterStats.SetStatValue(getSkillName(skill), skillLevels[(int)skill]);
-                // increase vision range
+                RenderSettings.fogDensity -= 0.01f;
                 if (isMaxxed(skill))
                 {
                     gameManager.playerController.toggleGlasses();
