@@ -13,6 +13,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip hitSoundPlayer;
     public AudioClip hitSoundEnemy;
 
+    public AudioClip buttonSound;
+    public AudioClip skillTreeSound;
+
     void Start()
     {
         musicSource.clip = combatMusic;
@@ -28,5 +31,10 @@ public class AudioManager : MonoBehaviour
     public void playSFX(AudioClip clip)
     {
         sfxSource.PlayOneShot(clip);
+    }
+
+    public void buttonPressed()
+    {
+        sfxSource.PlayOneShot(buttonSound);
     }
 }
