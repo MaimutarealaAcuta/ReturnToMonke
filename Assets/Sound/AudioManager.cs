@@ -11,7 +11,13 @@ public class AudioManager : MonoBehaviour
     public AudioClip waitingMusic;
 
     public AudioClip hitSoundPlayer;
+    public AudioClip eatingSound;
+
     public AudioClip hitSoundEnemy;
+
+    public AudioClip buttonSound;
+    public AudioClip skillTreeSound;
+    
 
     void Start()
     {
@@ -29,9 +35,8 @@ public class AudioManager : MonoBehaviour
     {
         sfxSource.PlayOneShot(clip);
     }
-
-    public void playButtonSound()
+    public void buttonPressed()
     {
-        sfxSource.PlayOneShot(hitSoundPlayer);
-     }
+        sfxSource.PlayOneShot(buttonSound);
+    }
 }
