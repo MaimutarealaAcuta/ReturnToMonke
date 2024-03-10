@@ -96,6 +96,10 @@ public class SkillTree : MonoBehaviour
                 break;
             case ESkill.Agility:
                 gameManager.characterStats.SetStatValue(getSkillName(skill), skillLevels[(int)skill]);
+                if (isMaxxed(skill))
+                {
+                    gameManager.playerController.toggleShoes();
+                }
                 break;
             case ESkill.Vitality:
                 gameManager.characterStats.SetStatValue(getSkillName(skill), skillLevels[(int)skill]);
@@ -108,14 +112,22 @@ public class SkillTree : MonoBehaviour
             case ESkill.Faith:
                 gameManager.characterStats.SetStatValue(getSkillName(skill), skillLevels[(int)skill]);
                 // increase critical damage chance
+                if (isMaxxed(skill))
+                {
+                    gameManager.playerController.toggleHalo();
+                }
                 break;
             case ESkill.Luck:
                 gameManager.characterStats.SetStatValue(getSkillName(skill), skillLevels[(int)skill]);
                 // increase dna drop
+                if (isMaxxed(skill))
+                {
+                    gameManager.playerController.toggleClover();
+                }
                 break;
             case ESkill.Vision:
                 gameManager.characterStats.SetStatValue(getSkillName(skill), skillLevels[(int)skill]);
-                // increase vision range
+                RenderSettings.fogDensity -= 0.01f;
                 if (isMaxxed(skill))
                 {
                     gameManager.playerController.toggleGlasses();

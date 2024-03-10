@@ -62,13 +62,15 @@ public class PlayerAttack : MonoBehaviour
 
     private int ComputeDamage()
     {
-        int damage = GameManager._instance.characterStats.GetStatValue("Strength");
+        int strength = GameManager._instance.characterStats.GetStatValue("Strength");
         float criticalChance = GameManager._instance.characterStats.GetStatValue("Faith");
         float randomValue = UnityEngine.Random.value;
 
-        int critDamange = randomValue <= (criticalChance / 10f) ? critMultiplier : 1;
+        int critDamage = randomValue <= (criticalChance / 10f) ? critMultiplier : 1;
 
-        return damage * critDamange;
+        int damage = (int)((1+strength) * 2.5 * critDamage);
+
+        return damage;
     }
 
     void ToggleMovementAfterAttack()

@@ -31,6 +31,6 @@ public class PauseUI : MonoBehaviour
     public void Quit()
     {
         Time.timeScale = 1;
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+        GameManager._instance.uiScript.ToggleEndGameUI(EndGameUI.EndGameType.Resign);
     }
 }

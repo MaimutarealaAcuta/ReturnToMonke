@@ -7,16 +7,17 @@ public class EndGameUI : MonoBehaviour
     public enum EndGameType
     {
         Death,
-        MonolithDeath
+        MonolithDeath,
+        Resign
     };
 
     string[] endGameMessages =
     {
         "You have died.",                       // Death
-        "The Monolith has been destroyed."      // MonolithDeath
+        "The Monolith has been destroyed.",     // MonolithDeath
+        "You have resigned."                    // Resign
     };
     
-
     public TMPro.TMP_Text endGameText;
     public TMPro.TMP_Text metricsText;
 
