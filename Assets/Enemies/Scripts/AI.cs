@@ -26,17 +26,7 @@ public class AI : MonoBehaviour, IDamageable
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        hp += GameManager._instance.currentWave;
-        try
-        {
-            monolith = GameObject.FindGameObjectWithTag("Monolith").transform.position;
-        }
-        catch (Exception)
-        {
-            Debug.Log("No monolith in scene!");
-            throw;
-        }
-        
+        hp += GameManager._instance.waveSystem.getCurrentWave();
     }
 
     private void FixedUpdate()
