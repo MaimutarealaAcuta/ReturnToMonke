@@ -69,6 +69,13 @@ public class SkillTree : MonoBehaviour
         new int[] { 200, 500, 1000  }  // Defense
     };
 
+    private AudioManager audioManager;
+
+    private void Start()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     public int getCurrentLevel (ESkill skill)
     {
         return skillLevels[(int)skill];
@@ -81,6 +88,8 @@ public class SkillTree : MonoBehaviour
 
     public void increaseLevel(ESkill skill)
     {
+        audioManager.playSFX(audioManager.skillTreeSound);
+
         GameManager gameManager = GameManager._instance;
         skillLevels[(int)skill]++;
 
