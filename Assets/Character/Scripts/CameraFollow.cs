@@ -15,9 +15,17 @@ public class CameraFollow : MonoBehaviour
     {
         if (target != null)
         {
-            Vector3 targetPosition = target.position + offset;
+            Vector3 targetPosition = CalculateCameraOffset();
 
             transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
         }
+    }
+
+    private Vector3 CalculateCameraOffset()
+    {
+        int lighthouseLevel = GameManager._instance.skillTree.getCurrentLevel(SkillTree.ESkill.Lighthouse);
+        Vector3 targetPosition = target.position + offset + new Vector3(0f, lighthouseLevel, -lighthouseLevel);
+
+        return targetPosition;
     }
 }
