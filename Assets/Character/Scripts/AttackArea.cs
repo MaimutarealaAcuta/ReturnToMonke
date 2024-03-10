@@ -27,6 +27,7 @@ public class AttackArea : MonoBehaviour
 
     public void removeEnemy(IDamageable enemy)
     {
-        Damageables.Remove(enemy);
+        if(Damageables.Contains(enemy))
+            Damageables.Remove(enemy);
     }
 }

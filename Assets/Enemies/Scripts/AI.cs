@@ -2,9 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR;
-using static UnityEditor.PlayerSettings;
-using static UnityEngine.Rendering.DebugUI;
 
 public class AI : MonoBehaviour, IDamageable
 {
@@ -20,26 +17,27 @@ public class AI : MonoBehaviour, IDamageable
     [SerializeField]
     private int DNAdrop = 1;
 
-    private Vector3 target;
+    private Vector3 target, monolith;
     private Rigidbody rb;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         hp += GameManager._instance.waveSystem.getCurrentWave();
+        monolith = GameObject.FindGameObjectWithTag("Monolith").transform.position;
     }
 
     private void FixedUpdate()
     {
         float distEnemyPlayer = Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position);
-        float distEnemyMonolith = Vector3.Distance(transform.position, Vector3.zero);
+        float distEnemyMonolith = Vector3.Distance(transform.position, monolith);
         if (distEnemyPlayer <= distanceTarget && distEnemyMonolith > attackRange)
         {
             target = GameObject.FindGameObjectWithTag("Player").transform.position;
         }
         else
         {
-            target = Vector3.zero;
+            target = monolith;
         }
 
         if (!attackArea.inAttakingArea)
@@ -50,6 +48,9 @@ public class AI : MonoBehaviour, IDamageable
             Quaternion rot = Quaternion.RotateTowards(rb.rotation, rot_dir, rotationSpeedDegree * Time.fixedDeltaTime);
             rb.MoveRotation(rot);
         }
+        
+        if (hp <= 0)
+            death();
     }
 
     private Vector3 getDirection(Vector3 target)
@@ -75,8 +76,6 @@ public class AI : MonoBehaviour, IDamageable
 
     public void Damage(int damageAmount)
     {
-        hp -= damageAmount;
-        if (hp < 0)
-            death();
+        hp -= damageAmount;        
     }
 }

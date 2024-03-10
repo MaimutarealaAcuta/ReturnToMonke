@@ -10,7 +10,7 @@ public class HelixScript : PickableScript
     {
         int luckLevel = GameManager._instance.characterStats.GetStatValue(
                             GameManager._instance.skillTree.getSkillName(SkillTree.ESkill.Luck));
-        int waveNumber = 1; // get wave number
+        int waveNumber = GameManager._instance.waveSystem.getCurrentWave();
         DNAvalue = baseValue + (int)(baseValue * luckLevel * 0.1f) + waveNumber;
     }
     

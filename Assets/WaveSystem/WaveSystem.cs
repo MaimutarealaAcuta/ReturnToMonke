@@ -16,9 +16,9 @@ public class WaveSystem : MonoBehaviour
     int[] waveStateTimes =
     {
         5,
-        30,
+        120,
         5,
-        30
+        50
     };
 
     private WaveState currentState = WaveState.Pause;
@@ -29,7 +29,6 @@ public class WaveSystem : MonoBehaviour
     private void Start()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-        StartWaveCycle();
     }
 
     IEnumerator DoWaveCycle()
@@ -66,25 +65,30 @@ public class WaveSystem : MonoBehaviour
         currentState = newState;
 
         // link to UI to display current state
+        MonolithBubble monolithBubble = GameManager._instance.monolith.gameObject.GetComponentInChildren<MonolithBubble>();
 
         switch (currentState)
         {
             case WaveState.Starting:
                 audioManager.changeMusic(audioManager.combatMusic);
                 Debug.Log("Wave starting...");
+                monolithBubble.ShowWaveText("Wave starting...");                
                 break;
             case WaveState.Spawning:
                 Debug.Log("Wave spawning...");
                 GameManager._instance.spawnSystem.StartSpawning(currentWave);
+                monolithBubble.ShowWaveText("WAVE " + currentWave);
                 break;
             case WaveState.Stopping:
                 audioManager.changeMusic(audioManager.waitingMusic);
                 Debug.Log("Wave stopping...");
                 GameManager._instance.spawnSystem.StopSpawning();
                 GameManager._instance.metrics.AddWaveSurvived();
+                monolithBubble.ShowWaveText("Wave stopping...");
                 break;
             case WaveState.Pause:
                 Debug.Log("Wave paused...");
+                monolithBubble.ShowWaveText("You may rest... for now");
                 break;
             default:
                 break;
