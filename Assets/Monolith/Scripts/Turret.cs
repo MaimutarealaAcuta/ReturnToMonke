@@ -11,6 +11,13 @@ public class Turret : MonoBehaviour
     private float attackCooldown = 0f;
     private List<GameObject> enemiesInRange = new List<GameObject>();
 
+    public void Start()
+    {
+        Collider playerCollider = GameObject.FindWithTag("Player").GetComponent<Collider>();
+        Collider turretColider = GetComponent<Collider>();
+
+        Physics.IgnoreCollision(playerCollider, turretColider);
+    }
 
     private void Update()
     {
@@ -24,6 +31,14 @@ public class Turret : MonoBehaviour
             {
                 AimAndShoot(enemiesInRange[0]);
                 attackCooldown = 1f / GetEffectiveAttackRate(defenceLevel);
+            }
+        }
+
+        for(int i = 0; i < enemiesInRange.Count; i++)
+        {
+            while (i < enemiesInRange.Count && enemiesInRange[i] == null)
+            {
+                enemiesInRange.RemoveAt(i);
             }
         }
     }

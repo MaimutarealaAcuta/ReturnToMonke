@@ -21,6 +21,7 @@ public class Monolith : MonoBehaviour, IInteractable, IDamageable
     private void Start()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        Time.timeScale = 1;
     }
 
     public void Update()

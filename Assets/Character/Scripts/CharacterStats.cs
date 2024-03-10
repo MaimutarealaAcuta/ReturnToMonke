@@ -43,14 +43,14 @@ public class CharacterStats : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.T))
-        {
-            Damage(10);
-        }
-        if (Input.GetKeyUp(KeyCode.H))
-        {
-            Heal(10);
-        }
+        //if (Input.GetKeyUp(KeyCode.T))
+        //{
+        //    Damage(10);
+        //}
+        //if (Input.GetKeyUp(KeyCode.H))
+        //{
+        //    Heal(10);
+        //}
     }
     
     private void SetCurrentHealth(int health)
