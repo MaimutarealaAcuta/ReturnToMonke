@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
-    private static float hightConstant = 1.5f;
+    private static float hightConstant = 0f;
     public static void SpawnObject(float minX, float minY, float maxX, float maxY, GameObject spawnObject)
     {
         Vector3 pos;

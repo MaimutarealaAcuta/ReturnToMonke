@@ -26,6 +26,7 @@ public class AI : MonoBehaviour, IDamageable
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        hp += GameManager._instance.currentWave;
     }
 
     private void FixedUpdate()

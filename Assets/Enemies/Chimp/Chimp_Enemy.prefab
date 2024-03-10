@@ -121,17 +121,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 33d72cdec8a06bc469255d2b18701291,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.16
+      value: 268.983
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 33d72cdec8a06bc469255d2b18701291,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.000009298325
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 33d72cdec8a06bc469255d2b18701291,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.59
+      value: 224.10417
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 33d72cdec8a06bc469255d2b18701291,
         type: 3}
@@ -658,6 +658,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -10.590331
       objectReference: {fileID: 0}
+    - target: {fileID: 2483522487722394258, guid: 33d72cdec8a06bc469255d2b18701291,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: df640ed4c238c2241970028a02e4740b, type: 2}
     - target: {fileID: 2559285840627121667, guid: 33d72cdec8a06bc469255d2b18701291,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1057,7 +1062,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 5
-  speed: 1
+  speed: 2
   distanceTarget: 5
   rotationSpeedDegree: 180
   attackRange: 5
@@ -1076,7 +1081,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackCooldown: 2
   attackArea: {fileID: 4282678516100431565}
-  damage: 1
+  damage: 2
 --- !u!4 &2283602604195345177 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 33d72cdec8a06bc469255d2b18701291,

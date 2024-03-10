@@ -14,8 +14,9 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField]
     private AttackArea attackArea;
-
     private Animator animator;
+
+    private bool isStrongAttack = false;
 
     void Start()
     {
@@ -34,28 +35,26 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && Time.time - lastAttackTime >= attackCooldown)
         {
             animator.SetTrigger("attack");
-            StartCoroutine("Hit", false);
+            isStrongAttack = false;
 
             lastAttackTime = Time.time;
         }
         else if (Input.GetMouseButtonDown(1) && Time.time - lastAttackTime >= strongAttackCooldown)
         {
             animator.SetTrigger("strongAttack");
-            StartCoroutine("Hit", true);
+            isStrongAttack = true;
 
             lastAttackTime = Time.time;
         }
     }
 
-    private IEnumerator Hit(bool strong)
+    private void Hit()
     {
         foreach (var attackAreaDamageable in attackArea.Damageables)
         {
             int effectiveDamage = ComputeDamage();
-            attackAreaDamageable.Damage(effectiveDamage * (strong ? 2 : 1));
+            attackAreaDamageable.Damage(effectiveDamage * (isStrongAttack ? 2 : 1));
         }
-
-        yield return new WaitForSeconds(strong ? strongAttackCooldown : attackCooldown);
     }
 
     private int ComputeDamage()
@@ -67,5 +66,10 @@ public class PlayerAttack : MonoBehaviour
         int critDamange = randomValue <= (criticalChance / 10f) ? critMultiplier : 1;
 
         return damage * critDamange;
+    }
+
+    void ToggleMovementAfterAttack()
+    {
+        GameManager._instance.playerController.toggleMovement();
     }
 }
