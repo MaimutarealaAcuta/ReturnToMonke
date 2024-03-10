@@ -27,6 +27,7 @@ public class AI : MonoBehaviour, IDamageable
     {
         rb = GetComponent<Rigidbody>();
         hp += GameManager._instance.waveSystem.getCurrentWave();
+        monolith = GameObject.FindGameObjectWithTag("Monolith").transform.position;
     }
 
     private void FixedUpdate()

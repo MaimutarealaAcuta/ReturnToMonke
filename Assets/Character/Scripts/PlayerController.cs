@@ -22,6 +22,10 @@ public class PlayerController : MonoBehaviour
     private GameObject simpleWeapon;
     [SerializeField]
     private GameObject advancedWeapon;
+    [SerializeField]
+    private GameObject glasses;
+    [SerializeField]
+    private GameObject armor;
 
     private void Start()
     {
@@ -139,6 +143,16 @@ public class PlayerController : MonoBehaviour
     {
         simpleWeapon.SetActive(false);
         advancedWeapon.SetActive(true);
+    }
+
+    public void toggleGlasses()
+    {
+        glasses.SetActive(true);
+    }
+
+    public void toggleArmor()
+    {
+        armor.SetActive(true);
     }
 
     #region Events

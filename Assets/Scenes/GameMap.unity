@@ -8858,6 +8858,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monolith
       objectReference: {fileID: 0}
+    - target: {fileID: 2639147997838790167, guid: 704da3190190c0448b446009d84af254,
+        type: 3}
+      propertyPath: DNA_points
+      value: 1000000
+      objectReference: {fileID: 0}
     - target: {fileID: 5022718534910862787, guid: 704da3190190c0448b446009d84af254,
         type: 3}
       propertyPath: m_LocalPosition.x
