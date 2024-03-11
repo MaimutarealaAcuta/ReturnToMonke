@@ -23,7 +23,8 @@ public class AI : MonoBehaviour, IDamageable
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        hp += GameManager._instance.waveSystem.getCurrentWave();
+        hp += 2 * GameManager._instance.waveSystem.getCurrentWave();
+        speed += GameManager._instance.waveSystem.getCurrentWave() / 5;
         monolith = GameObject.FindGameObjectWithTag("Monolith").transform.position;
     }
 

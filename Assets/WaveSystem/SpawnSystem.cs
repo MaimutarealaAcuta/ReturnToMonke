@@ -29,14 +29,17 @@ public class SpawnSystem : MonoBehaviour
 
     public void StartSpawning(int currentWave)
     {
-        maxSpawningTime = Mathf.Clamp(10.0f - currentWave * 0.1f, minSpawningTime+1.0f, 10.0f);
+        maxSpawningTime = Mathf.Clamp(10.0f - currentWave * 0.25f, minSpawningTime, 10.0f);
         SpawningCoroutine = StartCoroutine(SpawnEnemyLogic());
     }
 
     public void StopSpawning()
     {
         StopCoroutine(SpawningCoroutine);
+    }
 
+    public void CleanseEnemies()
+    {
         foreach (var enemy in enemies)
         {
             if (enemy != null)

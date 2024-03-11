@@ -47,6 +47,6 @@ public class EnemyAttack : MonoBehaviour
     private int ComputeDamage()
     {
         int currentWave = GameManager._instance.waveSystem.getCurrentWave();
-        return damage + currentWave;
+        return damage + 2*currentWave;
     }
 }

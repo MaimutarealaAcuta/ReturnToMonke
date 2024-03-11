@@ -4,11 +4,11 @@ using UnityEngine;
 public class Monolith : MonoBehaviour, IInteractable, IDamageable
 {
     [SerializeField]
-    private const int maxHealth = 10000;
+    private const int maxHealth = 4000;
 
     [SerializeField]
     [Range(0, maxHealth)]
-    private int health = 10000;
+    private int health = 4000;
 
     public RegenField regenField;
     public GameObject runesObj;

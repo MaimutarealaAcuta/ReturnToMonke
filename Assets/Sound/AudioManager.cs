@@ -44,4 +44,9 @@ public class AudioManager : MonoBehaviour
     {
         sfxSource.PlayOneShot(skillTreeSound);
     }
+
+    public void playEatingSound()
+    {
+        sfxSource.PlayOneShot(eatingSound);
+    }
 }

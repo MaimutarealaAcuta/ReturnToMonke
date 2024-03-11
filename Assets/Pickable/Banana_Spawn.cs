@@ -34,7 +34,7 @@ public class Banana_Spawn : MonoBehaviour
             if(currentItems < maxItems)
             {
                 Vector3 spawnPosition = new Vector3(Random.Range(minX, maxX), 1.5f, Random.Range(minZ, maxZ));
-                Instantiate(spawnObject, spawnPosition, spawnObject.transform.rotation);
+                GameObject.Instantiate(spawnObject, spawnPosition, spawnObject.transform.rotation);
             }
             spawnTime = Random.Range(spawnTimeMin, spawnTimeMax);
             currentTime = 0;

@@ -74,7 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e3b480f2f631f47b2af9956bc55f08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10000
+  health: 4000
   regenField: {fileID: 5901983120692643758}
   runesObj: {fileID: 8851164967074819124}
 --- !u!114 &3460889404360677359
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688840a5faefec340ba6d6c84229682b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DNA_points: 1000000
+  DNA_points: 0
 --- !u!54 &8256211063719568326
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -181,8 +181,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 12.3
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 7.533201
+  m_Center: {x: 0, y: 0, z: 4.766798}
 --- !u!114 &2893904550706399843
 MonoBehaviour:
   m_ObjectHideFlags: 0

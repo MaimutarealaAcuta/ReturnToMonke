@@ -15,10 +15,10 @@ public class WaveSystem : MonoBehaviour
 
     int[] waveStateTimes =
     {
-        5,
-        120,
-        5,
-        50
+        10,
+        80,
+        20,
+        30
     };
 
     private WaveState currentState = WaveState.Pause;
@@ -70,23 +70,24 @@ public class WaveSystem : MonoBehaviour
         switch (currentState)
         {
             case WaveState.Starting:
-                audioManager.changeMusic(audioManager.combatMusic);
                 Debug.Log("Wave starting...");
                 monolithBubble.ShowWaveText("Wave starting...");                
                 break;
             case WaveState.Spawning:
+                audioManager.changeMusic(audioManager.combatMusic);
                 Debug.Log("Wave spawning...");
                 GameManager._instance.spawnSystem.StartSpawning(currentWave);
                 monolithBubble.ShowWaveText("WAVE " + currentWave);
                 break;
             case WaveState.Stopping:
-                audioManager.changeMusic(audioManager.waitingMusic);
                 Debug.Log("Wave stopping...");
                 GameManager._instance.spawnSystem.StopSpawning();
-                GameManager._instance.metrics.AddWaveSurvived();
                 monolithBubble.ShowWaveText("Wave stopping...");
                 break;
             case WaveState.Pause:
+                audioManager.changeMusic(audioManager.waitingMusic);
+                GameManager._instance.spawnSystem.CleanseEnemies();
+                GameManager._instance.metrics.AddWaveSurvived();
                 Debug.Log("Wave paused...");
                 monolithBubble.ShowWaveText("You may rest... for now");
                 break;
